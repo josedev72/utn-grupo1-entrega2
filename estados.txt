@@ -1,0 +1,71 @@
+// cre un incidente para verificar los estados
+// caso de prueba pendiente
+        Incidentes in = new Incidentes(7,1,1,
+                1,1,"50 dias",
+                new Date(2024,10,24),new Pendiente(),
+                "en proceso","sin asignar");
+
+        System.out.println("\n********************************************************");
+        System.out.println("Estado original: "+in.getEstado());
+        in.pendiente();
+        //in.resuelto();
+        //in.enProceso();
+
+        String es = in.pendiente();
+        //String es = in.enProceso();
+        //String es = in.resuelto();
+
+        if (es!=null){
+            in.setEstado(es); // acá habría que hacer un update en la base de datos
+        }
+        System.out.println("\n********************************************************");
+        System.out.println("Estado Final: "+in.getEstado());
+
+
+
+// cre un incidente para verificar los estados
+// caso de prueba en proceso
+        Incidentes in = new Incidentes(7,1,1,
+                1,1,"50 dias",
+                new Date(2024,10,24),new Pendiente(),
+                "pendiente","asignado");
+
+        System.out.println("\n********************************************************");
+        System.out.println("Estado original: "+in.getEstado());
+        //in.pendiente();
+        //in.resuelto();
+        in.enProceso();
+
+        //String es = in.pendiente();
+        String es = in.enProceso();
+        //String es = in.resuelto();
+
+        if (es!=null){
+            in.setEstado(es);// acá habría que hacer un update en la base de datos
+        }
+        System.out.println("\n********************************************************");
+        System.out.println("Estado Final: "+in.getEstado());
+
+
+// cre un incidente para verificar los estados
+// caso de prueba resuelto.
+        Incidentes in = new Incidentes(7,1,1,
+                1,1,"50 dias",
+                new Date(2024,10,24),new Pendiente(),
+                "en proceso","finalizado");
+
+        System.out.println("\n********************************************************");
+        System.out.println("Estado original: "+in.getEstado());
+        //in.pendiente();
+        in.resuelto();
+        //in.enProceso();
+
+        //String es = in.pendiente();
+        //String es = in.enProceso();
+        String es = in.resuelto();
+
+        if (es!=null){
+            in.setEstado(es);// acá habría que hacer un update en la base de datos
+        }
+        System.out.println("\n********************************************************");
+        System.out.println("Estado Final: "+in.getEstado());
