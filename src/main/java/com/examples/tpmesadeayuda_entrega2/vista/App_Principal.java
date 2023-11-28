@@ -1,10 +1,15 @@
+
 package com.examples.tpmesadeayuda_entrega2.vista;
+
+
 
 //import com.examples.tpmesadeayuda_entrega2.daos.ServiciosDaoImplementacion;
 import com.examples.tpmesadeayuda_entrega2.logica.Clientes;
 //import com.examples.tpmesadeayuda_entrega2.logica.Incidentes;
 //import com.examples.tpmesadeayuda_entrega2.logica.Servicios;
+import com.examples.tpmesadeayuda_entrega2.logica.Incidentes;
 import com.examples.tpmesadeayuda_entrega2.persistencia.ClientesRepository;
+import com.examples.tpmesadeayuda_entrega2.persistencia.IncidentesRepository;
 //import com.examples.tpmesadeayuda_entrega2.persistencia.IncidentesRepository;
 //import com.examples.tpmesadeayuda_entrega2.persistencia.ServiciosRepository;
 //
@@ -13,6 +18,9 @@ import com.examples.tpmesadeayuda_entrega2.persistencia.ClientesRepository;
 //import javax.persistence.Persistence;
 //import javax.persistence.criteria.CriteriaBuilder;
 //import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class App_Principal {
@@ -104,6 +112,41 @@ public class App_Principal {
     }
 
     private static void altaIncidente() {
+        Scanner scanner = new Scanner(System.in);
+
+        //creo un incidente para poder pasarlo
+        Incidentes incidente = new Incidentes();
+
+        //id_cliente;
+        //id_servicios; id_especialidades; id_tecnicos; String tiempo_estimado_resolucion; Date fecha_posible_resolucion;
+
+        // -> Preg a Fabiana xq no consideramos en la bbdd, si es necesario persistir o no
+        //@Transient
+        // Estado estadoAux = getEstadoAux();
+        // String estado;
+        // String consideraciones;
+
+        System.out.println("Ingrese los datos del Incidente: ");
+        System.out.print("     Ingrese id de servicio: "); incidente.setId_servicios(scanner.nextInt());
+        System.out.print("     Ingrese id de especialidad: "); incidente.setId_especialidades(scanner.nextInt());
+        System.out.print("     Ingrese id del tecnico: "); incidente.setId_tecnicos(scanner.nextInt());
+
+        int dia, mes, anio;
+        System.out.println("     Ingrese fecha de posible resolución: ");
+        System.out.print("          Día: "); dia = scanner.nextInt();
+        System.out.print("          Mes: "); mes = scanner.nextInt();
+        System.out.print("          Año: "); anio = scanner.nextInt();
+        System.out.println();
+
+        incidente.setFecha_posible_resolucion(new Date(anio, mes, dia));
+
+        //creo el repositorio para poder hacer la consulta
+        IncidentesRepository repositorioIncidentes = new IncidentesRepository();
+        try {
+            repositorioIncidentes.agregarIncidentes(incidente);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void altaTecnico() {
@@ -117,8 +160,8 @@ public class App_Principal {
         }
 
 
-        //creo el repositorio para poder hacer la consulta
-//        ClientesRepository repositorioClientes = new ClientesRepository()
+        // Creo el repositorio para poder hacer la consulta
+        // ClientesRepository repositorioClientes = new ClientesRepository()
 
 
     }
