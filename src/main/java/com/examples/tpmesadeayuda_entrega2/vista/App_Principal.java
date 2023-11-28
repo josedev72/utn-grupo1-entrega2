@@ -1,8 +1,4 @@
-
 package com.examples.tpmesadeayuda_entrega2.vista;
-
-import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 
 import com.examples.tpmesadeayuda_entrega2.daos.ServiciosDaoImplementacion;
 import com.examples.tpmesadeayuda_entrega2.logica.Clientes;
@@ -245,5 +241,4 @@ public class App_Principal {
             // Manejo de excepciones
         }
     }
-
 }
