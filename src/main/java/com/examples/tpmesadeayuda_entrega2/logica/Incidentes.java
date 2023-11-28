@@ -27,15 +27,18 @@ import lombok.ToString;
 public class Incidentes {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    int id_incidentes;
-    int id_cliente;
-    int id_servicios;
-    int id_especialidades;
-    int id_tecnicos;
-    String tiempo_estimado_resolucion;
+    private int id_incidentes;
+    private int id_cliente;
+    private int id_servicios;
+    private int id_especialidades;
+    private int id_tecnicos;
+    private String tiempo_estimado_resolucion;
     @Temporal(TemporalType.DATE)
-    Date fecha_posible_resolucion;
-    String estado;
-    String consideraciones;
+    private Date fecha_posible_resolucion;
+    @Transient
+    private Estado estadoAux = getEstadoAux();
+    private String estado;
+    private String consideraciones;
+    
     
 }
