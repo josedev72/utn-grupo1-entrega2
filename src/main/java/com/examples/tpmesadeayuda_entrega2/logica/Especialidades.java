@@ -21,7 +21,7 @@ import lombok.ToString;
 public class Especialidades {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id_especialidades;
-    String nombre;
-    String descripcion;
+    private int id_especialidades;
+    private String nombre;
+    private String descripcion;
 }
