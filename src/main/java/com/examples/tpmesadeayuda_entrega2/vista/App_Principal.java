@@ -1,18 +1,18 @@
 package com.examples.tpmesadeayuda_entrega2.vista;
 
-import com.examples.tpmesadeayuda_entrega2.daos.ServiciosDaoImplementacion;
+//import com.examples.tpmesadeayuda_entrega2.daos.ServiciosDaoImplementacion;
 import com.examples.tpmesadeayuda_entrega2.logica.Clientes;
-import com.examples.tpmesadeayuda_entrega2.logica.Incidentes;
-import com.examples.tpmesadeayuda_entrega2.logica.Servicios;
+//import com.examples.tpmesadeayuda_entrega2.logica.Incidentes;
+//import com.examples.tpmesadeayuda_entrega2.logica.Servicios;
 import com.examples.tpmesadeayuda_entrega2.persistencia.ClientesRepository;
-import com.examples.tpmesadeayuda_entrega2.persistencia.IncidentesRepository;
-import com.examples.tpmesadeayuda_entrega2.persistencia.ServiciosRepository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.Date;
+//import com.examples.tpmesadeayuda_entrega2.persistencia.IncidentesRepository;
+//import com.examples.tpmesadeayuda_entrega2.persistencia.ServiciosRepository;
+//
+//import javax.persistence.EntityManager;
+//import javax.persistence.EntityManagerFactory;
+//import javax.persistence.Persistence;
+//import javax.persistence.criteria.CriteriaBuilder;
+//import java.util.Date;
 import java.util.Scanner;
 
 public class App_Principal {
@@ -61,7 +61,7 @@ public class App_Principal {
                         case 3:
                             eliminarCliente();break;
                         case 4:
-                            listarClientes();break;
+                            listarTodosLosClientes();break;
                         default:
                             System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
                     }
@@ -82,15 +82,16 @@ public class App_Principal {
                     System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
             }
         } while (opcion != 0);
-
+    /*
     try {
-//          repositorioClientes.agregarClientes(cliente1);
-//          repositorioServicios.agregarServicios(servicio1);
-//          repositorioIncidentes.agregarIncidentes(incidentes1);
+          repositorioClientes.agregarClientes(cliente1);
+          repositorioServicios.agregarServicios(servicio1);
+          repositorioIncidentes.agregarIncidentes(incidentes1);
 
         }catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 
     private static void listarTecnicos() {
@@ -108,9 +109,16 @@ public class App_Principal {
     private static void altaTecnico() {
     }
 
-    private static void listarClientes() {
+    private static void listarTodosLosClientes() {
         ClientesRepository repositorioClientes = new ClientesRepository();
         repositorioClientes.obtenerEntityManagerConfigurado();
+        for (Clientes clienteActual : repositorioClientes.listarTodosLosClientes()) {
+            System.out.println(clienteActual.toString());
+        }
+
+
+        //creo el repositorio para poder hacer la consulta
+//        ClientesRepository repositorioClientes = new ClientesRepository()
 
 
     }
