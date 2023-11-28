@@ -21,11 +21,11 @@ import lombok.ToString;
 public class Tecnicos {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id_tecnicos;
-    String dni;
-    String nombre;
-    String apellido;
-    String celular;
-    String tecnicoscol;
-    String medio_de_notificacion;
+    private int id_tecnicos;
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String celular;
+    private String tecnicoscol;
+    private String medio_de_notificacion;
 }
