@@ -26,9 +26,9 @@ import lombok.ToString;
 public class Clientes {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    int id_clientes;
+    private int id_clientes;
     @Basic
-    String cuit;
-    String razonSocial;
-    String email;
+    private String cuit;
+    private String razonSocial;
+    private String email;
 }
