@@ -1,10 +1,13 @@
 package com.examples.tpmesadeayuda_entrega2.persistencia;
+
 import com.examples.tpmesadeayuda_entrega2.daos.ClientesDAO;
 import com.examples.tpmesadeayuda_entrega2.daos.DAOFactory;
 import com.examples.tpmesadeayuda_entrega2.logica.Clientes;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.List;
 
 public class ClientesRepository {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("db_mesadeayuda_entrega2PU");
@@ -22,6 +25,21 @@ public class ClientesRepository {
         EntityManager em = emf.createEntityManager();
         clientesDAO.setEntityManager(em);
         return em;
+    }
+
+    public List<Clientes> listarTodosLosClientes() {
+        EntityManager em = obtenerEntityManagerConfigurado();
+        List<Clientes> clientes;
+
+        try {
+            // Consulta JPQL para obtener todos los clientes
+            Query query = em.createQuery("SELECT c FROM Clientes c");
+            clientes = query.getResultList();
+        } finally {
+            em.close(); // Cerrar el EntityManager para liberar recursos
+        }
+
+        return clientes;
     }
 
     // creo los métodos para agregar, modificar, borrar y consultar datos
@@ -81,5 +99,3 @@ public class ClientesRepository {
         return cli2;
     }
 }
-
-
