@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import com.examples.tpmesadeayuda_entrega2.estados.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -39,6 +42,4 @@ public class Incidentes {
     private Estado estadoAux = getEstadoAux();
     private String estado;
     private String consideraciones;
-    
-    
 }
