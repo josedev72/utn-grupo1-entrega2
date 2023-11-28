@@ -21,6 +21,6 @@ import lombok.ToString;
 @Table(name = "clientes_servicios")
 public class Clientes_Servicios {
     @Id
-    int id_clientes;
-    int id_servicios;
+    private int id_clientes;
+    private int id_servicios;
 }
